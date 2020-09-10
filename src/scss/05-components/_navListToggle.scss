@@ -1,0 +1,39 @@
+/** @format */
+
+/// list element
+///
+/// @group Layouts
+nav.c-nListToggle {
+	// width: 100%;
+	> input[type="checkbox"] {
+		display: none;
+		&:checked {
+			~ .c-nListToggle-toggler {
+				font-weight: $fontWeightBold;
+				margin-bottom: 1rem;
+				i.c-icon {
+					transform: rotate(180deg);
+				}
+			}
+		}
+		&:not(:checked) {
+			~ ul.c-nListToggle-group,
+			~ ol.c-nListToggle-group {
+				max-height: 0;
+			}
+		}
+	}
+}
+.c-nListToggle-toggler {
+	display: block;
+	@include flexbox(row, nowrap, space-between, center);
+	i.c-icon {
+		width: 1.8rem;
+	}
+}
+ul.c-nListToggle-group,
+ol.c-nListToggle-group {
+	> li {
+		width: 100%;
+	}
+}

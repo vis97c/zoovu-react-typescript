@@ -1,0 +1,35 @@
+/** @format */
+
+/// column container
+///
+/// @group Layouts
+.c-cols {
+	overflow: hidden;
+	gap: 2rem;
+
+	/// Column count
+	///
+	/// @group Modifiers
+	@for $i from 3 through 12 {
+		&.m__count-#{$i} {
+			@include extend-viewports {
+				columns: #{$minColumnSize/$i * 3} #{$i};
+			}
+		}
+	}
+	/// default
+	&.m__count-2,
+	&:not([class*="m__count"]) {
+		columns: #{$minColumnSize/2 * 3} 2;
+	}
+
+	> * {
+		// margin: 0;
+		// display: inline-block;
+		break-inside: avoid;
+	}
+	&:not([class*="gm__gaping"])
+		> :not([class*="gm__mBottom"]):not(:last-child):not(br) {
+		margin-bottom: 2rem;
+	}
+}

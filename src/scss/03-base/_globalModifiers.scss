@@ -1,0 +1,854 @@
+/** @format */
+
+/// inicia GLOBAL MODIFIERS
+/// Can be used in any element
+
+/// hidden element, hide visually only
+///
+/// @group GlobalModifiers
+
+.gm__hidden {
+	@include extend-viewports(true) {
+		width: 0.1px;
+		height: 0.1px;
+		opacity: 0;
+		overflow: hidden;
+		position: absolute;
+		z-index: -1;
+	}
+}
+
+/// drop area
+///
+/// @group GlobalModifiers
+.gm__grab {
+	@include extend-viewports {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		&:hover {
+			cursor: grab !important;
+		}
+	}
+}
+
+/// drop area
+///
+/// @group GlobalModifiers
+.gm__dropArea {
+	@include extend-viewports {
+		border: 0;
+		box-shadow: none !important;
+		&:not(.is__full) {
+			border: 2px dashed color(secondary);
+		}
+		&:hover {
+			cursor: default !important;
+		}
+	}
+}
+
+/// flex growth and shrink
+///
+/// @group GlobalModifiers
+.gm__flx {
+	@include extend-viewports {
+		flex: 1 1 auto;
+	}
+}
+
+/// positon
+///
+/// @group GlobalModifiers
+.gm__position {
+	&-fixed {
+		@include extend-viewports {
+			position: fixed;
+		}
+	}
+	&-sticky {
+		@include extend-viewports {
+			position: sticky;
+		}
+	}
+	&-relative {
+		@include extend-viewports {
+			position: relative;
+		}
+	}
+	&-absolute {
+		@include extend-viewports {
+			position: absolute;
+		}
+	}
+	/// default
+	&,
+	&-static {
+		@include extend-viewports {
+			position: static;
+		}
+	}
+}
+
+/// text wrap
+///
+/// @group GlobalModifiers
+.gm__txtWrap {
+	&-nowrap {
+		@include extend-viewports {
+			white-space: nowrap;
+		}
+	}
+	/// default
+	&,
+	&-wrap {
+		@include extend-viewports {
+			white-space: normal;
+		}
+	}
+}
+
+/// box margins
+/// X axis
+///
+/// @group GlobalModifiers
+.gm__mX {
+	&-left {
+		@include extend-viewports {
+			margin-left: 0;
+			margin-right: auto;
+		}
+	}
+	&-right {
+		@include extend-viewports {
+			margin-left: auto;
+			margin-right: 0;
+		}
+	}
+	/// default
+	&,
+	&-center {
+		@include extend-viewports {
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+}
+
+/// box margins
+/// Y axis
+///
+/// @group GlobalModifiers
+.gm__mY {
+	&-top {
+		@include extend-viewports {
+			margin-top: 0;
+			margin-bottom: auto;
+		}
+	}
+	&-bottom {
+		@include extend-viewports {
+			margin-top: auto;
+			margin-bottom: 0;
+		}
+	}
+	/// default
+	&,
+	&-center {
+		@include extend-viewports {
+			margin-top: auto;
+			margin-bottom: auto;
+		}
+	}
+}
+
+/// box padding
+/// X axis
+///
+/// @group GlobalModifiers
+.gm__pX {
+	/// there is no thing such as padding auto
+	@include extend-viewports {
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+}
+
+/// box padding
+/// Y axis
+///
+/// @group GlobalModifiers
+.gm__pY {
+	/// there is no thing such as padding auto
+	@include extend-viewports {
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+	}
+}
+
+/// flexbox justify content
+///
+/// @group GlobalModifiers
+.gm__flxJustify {
+	&-end {
+		@include extend-viewports {
+			justify-content: flex-end;
+		}
+	}
+	&-start {
+		@include extend-viewports {
+			justify-content: flex-start;
+		}
+	}
+	&-around {
+		@include extend-viewports {
+			justify-content: space-around;
+		}
+	}
+	&-between {
+		@include extend-viewports {
+			justify-content: space-between;
+		}
+	}
+	/// default
+	&,
+	&-center {
+		@include extend-viewports {
+			justify-content: center;
+		}
+	}
+}
+
+/// flexbox align items
+///
+/// @group GlobalModifiers
+.gm__flxAlign {
+	&-end {
+		@include extend-viewports {
+			align-items: flex-end;
+		}
+	}
+	&-start {
+		@include extend-viewports {
+			align-items: flex-start;
+		}
+	}
+	&-stretch {
+		@include extend-viewports {
+			align-items: stretch;
+		}
+	}
+	/// default
+	&,
+	&-center {
+		@include extend-viewports {
+			align-items: center;
+		}
+	}
+}
+
+/// font weight
+///
+/// @group GlobalModifiers
+.gm__txtWeight {
+	&-bold {
+		@include extend-viewports {
+			font-weight: $fontWeightBold;
+			@supports (-moz-appearance: none) {
+				// firefox fix
+				font-weight: $fontWeightBoldAlt;
+			}
+		}
+	}
+	&-regular {
+		@include extend-viewports {
+			font-weight: $fontWeightRegular;
+			@supports (-moz-appearance: none) {
+				// firefox fix
+				font-weight: $fontWeightRegularAlt;
+			}
+		}
+	}
+}
+
+/// text align
+///
+/// @group FamilyGlobalModifiers
+.gm__txtAlign,
+.gm__txtAlignFlx {
+	&-right {
+		@include extend-viewports {
+			text-align: right;
+			> :not([class*="gm__txtAlign"]):not([class|="c"]) {
+				text-align: right;
+			}
+		}
+	}
+	&-center {
+		@include extend-viewports {
+			text-align: center;
+			> :not([class*="gm__txtAlign"]):not([class|="c"]) {
+				text-align: center;
+			}
+		}
+	}
+	&-justify {
+		@include extend-viewports {
+			text-align: justify;
+			> :not([class*="gm__txtAlign"]):not([class|="c"]) {
+				text-align: justify;
+			}
+		}
+	}
+	/// default
+	&,
+	&-left {
+		@include extend-viewports {
+			text-align: left;
+			> :not([class*="gm__txtAlign"]):not([class|="c"]) {
+				text-align: left;
+			}
+		}
+	}
+}
+
+/// text align flex
+///
+/// @group FamilyGlobalModifiers
+.gm__txtAlignFlx {
+	&-right {
+		@include extend-viewports {
+			@include flexbox(column, nowrap, flex-start, flex-end, inline-flex);
+			> :not([class*="gm__txtAlign"]):not([class|="c"]) {
+				@include flexbox(
+					column,
+					nowrap,
+					flex-start,
+					flex-end,
+					inline-flex
+				);
+			}
+		}
+	}
+	&-center {
+		@include extend-viewports {
+			@include flexbox(column, nowrap, flex-start, center, inline-flex);
+			> :not([class*="gm__txtAlign"]):not([class|="c"]) {
+				@include flexbox(
+					column,
+					nowrap,
+					flex-start,
+					center,
+					inline-flex
+				);
+			}
+		}
+	}
+	&-justify {
+		@include extend-viewports {
+			@include flexbox(column, nowrap, flex-start, stretch, inline-flex);
+			> :not([class*="gm__txtAlign"]):not([class|="c"]) {
+				@include flexbox(
+					column,
+					nowrap,
+					flex-start,
+					stretch,
+					inline-flex
+				);
+			}
+		}
+	}
+	/// default
+	&,
+	&-left {
+		@include extend-viewports {
+			@include flexbox(
+				column,
+				nowrap,
+				flex-start,
+				flex-start,
+				inline-flex
+			);
+			> :not([class*="gm__txtAlign"]):not([class|="c"]) {
+				@include flexbox(
+					column,
+					nowrap,
+					flex-start,
+					flex-start,
+					inline-flex
+				);
+			}
+		}
+	}
+}
+
+/// LOOPS
+
+/// text size
+///
+/// @group GlobalModifiers
+@each $name, $size in $fontSizes {
+	.gm__txtSize-#{$name} {
+		@include extend-viewports {
+			font-size: #{$size};
+		}
+	}
+}
+/// default
+.gm__txtSize,
+.gm__txtSize-normal {
+	@include extend-viewports {
+		font-size: $fontSize;
+	}
+}
+
+/// box model: margin & padding
+///
+/// @group GlobalModifiers
+$models: margin, padding;
+@each $model in $models {
+	@for $i from 1 through 10 {
+		/// all sides
+		.gm__#{str-slice($model,1,1) + "c-" + $i*5} {
+			@include extend-viewports {
+				#{$model}: #{$i/3}rem;
+			}
+		}
+		/// X axis
+		.gm__#{str-slice($model,1,1) + "c-" + $i*5} {
+			@include extend-viewports {
+				#{$model}-left: #{$i/3}rem;
+				#{$model}-right: #{$i/3}rem;
+			}
+		}
+		/// Y axis
+		.gm__#{str-slice($model,1,1) + "Y-" + $i*5} {
+			@include extend-viewports {
+				#{$model}-top: #{$i/3}rem;
+				#{$model}-bottom: #{$i/3}rem;
+			}
+		}
+	}
+	/// default: all sides
+	.gm__#{$model},
+	.gm__#{str-slice($model,1,1)} {
+		@include extend-viewports {
+			#{$model}: 1rem;
+		}
+	}
+	/// margin & padding already have defaults for X & Y axles
+}
+
+/// Dimensions
+$dimensions: width, height;
+@each $dimension in $dimensions {
+	/// width, height
+	///
+	/// @group GlobalModifiers
+	.gm__#{$dimension} {
+		&-quarter {
+			@include extend-viewports {
+				#{$dimension}: 50%;
+			}
+		}
+		&-third {
+			@include extend-viewports {
+				#{$dimension}: 33%;
+			}
+		}
+		&-half {
+			@include extend-viewports {
+				#{$dimension}: 50%;
+			}
+		}
+		&,
+		&-full {
+			@include extend-viewports {
+				#{$dimension}: 100%;
+			}
+		}
+	}
+
+	/// max width, max height
+	$constrains: min, max;
+	@each $constrain in $constrains {
+		/// pixel based
+		///
+		/// @group GlobalModifiers
+		$maxSizes: 1400, 1300, 1080, 980, 880, 780, 580, 480, 440, 220, 180;
+		@each $size in $maxSizes {
+			.gm__#{$constrain + capitalize($dimension)}-#{$size} {
+				@include extend-viewports {
+					#{$constrain}-#{$dimension}: #{$size}px;
+				}
+			}
+		}
+		/// default pixel based constrains
+		.gm__#{$constrain + capitalize($dimension)},
+		.gm__#{$constrain + capitalize($dimension)}-1200 {
+			@include extend-viewports {
+				max-#{$dimension}: 1200px;
+			}
+		}
+
+		/// min width, max width
+		/// viewport width based
+		///
+		/// @group GlobalModifiers
+		@for $i from 3 through 10 {
+			.gm__#{$constrain + capitalize($dimension)}Vw-#{$i*10} {
+				@include extend-viewports {
+					#{$constrain}-#{$dimension}: #{$i * 10}vw;
+				}
+			}
+			.gm__#{$constrain + capitalize($dimension)}Vh-#{$i*10} {
+				@include extend-viewports {
+					#{$constrain}-#{$dimension}: #{$i * 10}vh;
+				}
+			}
+		}
+		/// default viewport based constrains
+		.gm__#{$constrain + capitalize($dimension)}Vw {
+			@include extend-viewports {
+				#{$constrain}-#{$dimension}: 30vw;
+			}
+		}
+		.gm__#{$constrain + capitalize($dimension)}Vh {
+			@include extend-viewports {
+				#{$constrain}-#{$dimension}: 30vh;
+			}
+		}
+	}
+}
+
+/// margin & padding
+///
+/// @group GlobalModifiers
+$directions: top, right, bottom, left;
+@each $direction in $directions {
+	@for $i from 1 through 10 {
+		/// margins
+		.gm__m#{capitalize($direction) + "c-" + $i*5} {
+			@include extend-viewports {
+				margin-#{$direction}: #{$i/3}rem;
+			}
+		}
+		/// paddings
+		.gm__p#{capitalize($direction) + "c-" + $i*5} {
+			@include extend-viewports {
+				padding-#{$direction}: #{$i/3}rem;
+			}
+		}
+	}
+	/// margin defaults
+	.gm__m#{capitalize($direction)} {
+		@include extend-viewports {
+			margin-#{$direction}: 1rem;
+		}
+	}
+	/// padding defaults
+	.gm__p#{capitalize($direction)} {
+		@include extend-viewports {
+			padding-#{$direction}: 1rem;
+		}
+	}
+}
+
+/// 60, 80, 100, 120
+@for $i from 3 through 6 {
+	/// grid Gap
+	/// both dimension
+	///
+	/// @group GlobalModifiers
+	.gm__gap-#{$i*20},
+	.gm__grdGap-#{$i*20} {
+		@include extend-viewports {
+			gap: #{($i * 4) / 3}rem;
+		}
+	}
+
+	/// gap using margin
+	/// both axis
+	///
+	/// @group GlobalModifiers
+	.gm__gaping-#{$i*20} {
+		@include extend-viewports {
+			/// this is a very special class
+			/// omit this specific fix
+			&:not(.unfix__gaping) {
+				margin-left: -0.1px;
+				margin-top: -0.1px;
+				margin-right: -#{($i * 4) / 3}rem;
+				margin-bottom: -#{($i * 4) / 3}rem;
+				box-sizing: border-box;
+			}
+			> * {
+				margin-bottom: #{($i * 4) / 3}rem;
+				margin-right: #{($i * 4) / 3}rem;
+			}
+		}
+	}
+	.gm__gapingX-#{$i*20} {
+		/// X axis
+		@include extend-viewports {
+			> :not([class*="gm__mBottom"]):not(:last-child).unfix__gaping,
+			> :not([class*="gm__mBottom"]):not(:last-child):not(.gm__gaping):not([class*="gm__gaping-"]) {
+				margin-right: #{($i * 4) / 3}rem;
+			}
+			> :not(:last-child):not(.unfix__gaping).gm__gaping + *,
+			> :not(:last-child):not(.unfix__gaping)[class*="gm__gaping-"] + * {
+				margin-left: #{($i * 4) / 3}rem;
+			}
+		}
+	}
+	.gm__gapingY-#{$i*20} {
+		/// Y axis
+		@include extend-viewports {
+			> :not([class*="gm__mBottom"]):not(:last-child).unfix__gaping,
+			> :not([class*="gm__mBottom"]):not(:last-child):not(.gm__gaping):not([class*="gm__gaping-"]) {
+				margin-bottom: #{($i * 4) / 3}rem;
+			}
+			> :not(:last-child):not(.unfix__gaping).gm__gaping + *,
+			> :not(:last-child):not(.unfix__gaping)[class*="gm__gaping-"] + * {
+				margin-top: #{($i * 4) / 3}rem;
+			}
+		}
+	}
+}
+
+@for $i from 1 through 10 {
+	/// grid Gap
+	/// both dimension
+	///
+	/// @group GlobalModifiers
+	.gm__gap-#{$i*5},
+	.gm__grdGap-#{$i*5} {
+		@include extend-viewports {
+			gap: #{$i/3}rem;
+		}
+	}
+
+	/// gap using margin
+	/// both axis
+	///
+	/// @group GlobalModifiers
+	.gm__gaping-#{$i*5} {
+		@include extend-viewports {
+			/// this is a very special class
+			/// omit this specific fix
+			&:not(.unfix__gaping) {
+				margin-left: -0.1px;
+				margin-top: -0.1px;
+				margin-right: -#{$i/3}rem;
+				margin-bottom: -#{$i/3}rem;
+				box-sizing: border-box;
+			}
+			> * {
+				margin-bottom: #{$i/3}rem;
+				margin-right: #{$i/3}rem;
+			}
+		}
+	}
+	.gm__gapingX-#{$i*5} {
+		/// X axis
+		@include extend-viewports {
+			> :not([class*="gm__mBottom"]):not(:last-child).unfix__gaping,
+			> :not([class*="gm__mBottom"]):not(:last-child):not(.gm__gaping):not([class*="gm__gaping-"]) {
+				margin-right: #{$i/3}rem;
+			}
+			> :not(:last-child):not(.unfix__gaping).gm__gaping + *,
+			> :not(:last-child):not(.unfix__gaping)[class*="gm__gaping-"] + * {
+				margin-left: #{$i/3}rem;
+			}
+		}
+	}
+	.gm__gapingY-#{$i*5} {
+		/// Y axis
+		@include extend-viewports {
+			> :not([class*="gm__mBottom"]):not(:last-child).unfix__gaping,
+			> :not([class*="gm__mBottom"]):not(:last-child):not(.gm__gaping):not([class*="gm__gaping-"]) {
+				margin-bottom: #{$i/3}rem;
+			}
+			> :not(:last-child):not(.unfix__gaping).gm__gaping + *,
+			> :not(:last-child):not(.unfix__gaping)[class*="gm__gaping-"] + * {
+				margin-top: #{$i/3}rem;
+			}
+		}
+	}
+}
+
+/// grid/column gap default
+.gm__gap,
+.gm__grdGap {
+	@include extend-viewports {
+		gap: 1rem;
+	}
+}
+
+/// item spacing defaults
+.gm__gaping {
+	@include extend-viewports {
+		/// this is a very special class
+		/// omit this specific fix
+		&:not(.unfix__gaping) {
+			margin-left: -0.1px;
+			margin-top: -0.1px;
+			margin-right: -1rem;
+			margin-bottom: -1rem;
+			box-sizing: border-box;
+		}
+		> * {
+			margin-bottom: 1rem;
+			margin-right: 1rem;
+		}
+	}
+}
+.gm__gapingX {
+	/// X dimension
+	@include extend-viewports {
+		> :not([class*="gm__mRight"]):not(:last-child) {
+			margin-right: 1rem;
+		}
+	}
+}
+.gm__gapingY {
+	/// Y dimension
+	@include extend-viewports {
+		> :not([class*="gm__mBottom"]):not(:last-child) {
+			margin-bottom: 1rem;
+		}
+	}
+}
+
+/// text color & text shadow & background color & borderColor
+/// color based modifiers
+///
+/// @group ColorGlobalModifiers
+@each $name, $color in $colors {
+	/// striped childs
+	.gm__striped-#{$name} {
+		@include extend-viewports {
+			> :nth-child(odd) {
+				background-color: #{color($name, 0.1)};
+			}
+		}
+	}
+
+	/// text color
+	.gm__txtColor-#{$name} {
+		@include extend-viewports {
+			&,
+			> :not([class*="gm__txtColor"]):not([class|="c"]) {
+				color: #{color($name)};
+			}
+		}
+	}
+
+	/// text shadow
+	.gm__txtShadow-#{$name} {
+		@include extend-viewports {
+			&,
+			> :not([class*="gm__txtShadow"]):not([class|="c"]) {
+				text-shadow: 1px 1px 1px #{color($name)};
+			}
+		}
+	}
+
+	/// background color
+	.gm__bgColor-#{$name} {
+		@include extend-viewports {
+			background: #{color($name)};
+		}
+	}
+
+	/// borderColor
+	.gm__bdrColor-#{$name} {
+		@include extend-viewports {
+			border-color: #{color($name)};
+		}
+	}
+
+	/// shades of color
+	@for $i from 1 through 9 {
+		/// text color
+		.gm__txtColor-#{$name}#{$i} {
+			@include extend-viewports {
+				&,
+				> :not([class*="gm__txtColor"]):not([class|="c"]) {
+					color: #{color($name, $i/10)};
+				}
+			}
+		}
+
+		/// text shadow
+		.gm__txtShadow-#{$name}#{$i} {
+			@include extend-viewports {
+				&,
+				> :not([class*="gm__txtShadow"]):not([class|="c"]) {
+					text-shadow: 1px 1px 1px #{color($name, $i/10)};
+				}
+			}
+		}
+
+		/// background color
+		.gm__bgColor-#{$name}#{$i} {
+			@include extend-viewports {
+				background: #{color($name, $i/10)};
+			}
+		}
+
+		/// borderColor
+		.gm__bdrColor-#{$name}#{$i} {
+			@include extend-viewports {
+				border-color: #{color($name, $i/10)};
+			}
+		}
+	}
+}
+
+/// default striped child color
+.gm__striped {
+	@include extend-viewports {
+		> :nth-child(odd) {
+			background-color: color(secondary, 0.1);
+		}
+	}
+}
+
+/// default color
+.gm__txtColor {
+	@include extend-viewports {
+		&,
+		> :not([class*="gm__txtColor"]):not([class|="c"]) {
+			color: color(dark, 0.7);
+		}
+	}
+}
+
+/// default text color
+.gm__txtShadow {
+	@include extend-viewports {
+		&,
+		> :not([class*="gm__txtShadow"]):not([class|="c"]) {
+			text-shadow: 1px 1px 1px color(dark, 0.3);
+		}
+	}
+}
+
+/// default background color
+.gm__bgColor {
+	@include extend-viewports {
+		background: color(light);
+	}
+}
+
+/// default borderColor
+.gm__bdrColor {
+	@include extend-viewports {
+		border-color: color(secondary, 0.1);
+	}
+}
+
+/// termina GLOBAL MODIFIERS

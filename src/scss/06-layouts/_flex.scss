@@ -1,0 +1,85 @@
+/** @format */
+
+/// flex container
+///
+/// @group Layouts
+.c-flx {
+	display: flex;
+}
+
+/// flex inline container
+///
+/// @group Layouts
+.c-flxInline {
+	display: inline-flex;
+}
+
+/// flexbox container
+.c-flx,
+.c-flxInline {
+	/// flexbox column container
+	///
+	/// @group Modifiers
+	&.m__flxColumn {
+		&-wrap {
+			@include extend-viewports {
+				flex-flow: column wrap;
+			}
+		}
+		/// default
+		&,
+		&-nowrap {
+			@include extend-viewports {
+				flex-flow: column nowrap;
+				&:not([class*="gm__gaping"]) {
+					> :not([class*="gm__m"]):not(br):not(:last-child),
+					> [class*="gm__min"]:not(br):not(:last-child),
+					> [class*="gm__max"]:not(br):not(:last-child) {
+						margin-bottom: 1rem;
+					}
+				}
+			}
+		}
+	}
+
+	/// flexbox row container
+	///
+	/// @group Modifiers
+	&.m__flxRow {
+		&-wrap {
+			@include extend-viewports {
+				flex-flow: row wrap;
+			}
+		}
+		/// default
+		&,
+		&-nowrap {
+			@include extend-viewports {
+				flex-flow: row nowrap;
+				&:not([class*="gm__gaping"]) {
+					> :not([class*="gm__m"]):not(br):not(:last-child),
+					> [class*="gm__min"]:not(br):not(:last-child),
+					> [class*="gm__max"]:not(br):not(:last-child) {
+						margin-right: 1rem;
+					}
+				}
+			}
+		}
+	}
+
+	&.m__flxColumn,
+	&.m__flxRow {
+		&-wrap {
+			@include extend-viewports {
+				&:not([class*="gm__gaping"]) {
+					> :not([class*="gm__m"]):not(br),
+					> [class*="gm__min"]:not(br),
+					> [class*="gm__max"]:not(br) {
+						margin-bottom: 1rem;
+						margin-right: 1rem;
+					}
+				}
+			}
+		}
+	}
+}

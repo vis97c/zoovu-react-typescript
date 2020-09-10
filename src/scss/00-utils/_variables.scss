@@ -1,0 +1,78 @@
+/** @format */
+/*
+	Project variables
+*/
+$responsive: true !default;
+$fonts: (
+	primary: (
+		"'Kumbh Sans'",
+		sans-serif,
+	),
+	awesome: "'Font Awesome 5 Free'",
+) !default;
+
+$primary: #3b0078 !default;
+$secondary: #20e7b8 !default;
+$light: #fff !default;
+$dark: #000 !default;
+$danger: #e74c3c !default;
+$success: #259c21 !default;
+
+$colors: (
+	primary: $primary,
+	secondary: $secondary,
+	light: $light,
+	dark: $dark,
+	danger: $danger,
+	success: $success,
+);
+
+$viewportSm: 640px !default;
+$viewportMd: 768px !default;
+$viewportLg: 1080px !default;
+$viewportXl: 1280px !default;
+
+$viewports: (
+	// sm: $viewportSm,
+		md: $viewportMd,
+	// lg: $viewportLg,
+		xl: $viewportXl
+);
+
+/// font size
+$fontSizeExtraSmall: 0.7rem !default;
+$fontSizeSmall: 0.9rem !default;
+$fontSize: 1rem !default;
+$fontSizeMedium: 1.2rem !default;
+$fontSizeLarge: 1.8rem !default;
+$fontSizeExtraLarge: 2.8rem !default;
+$fontSizeExtraExtraLarge: 3.8rem !default;
+$fontSizeMaximum: 4.8rem !default;
+
+$fontSizes: (
+	xs: $fontSizeExtraSmall,
+	sm: $fontSizeSmall,
+	md: $fontSizeMedium,
+	lg: $fontSizeLarge,
+	xl: $fontSizeExtraLarge,
+	xxl: $fontSizeExtraExtraLarge,
+	max: $fontSizeMaximum,
+);
+
+/// font weight
+$fontWeightRegular: 400 !default;
+$fontWeightBold: 700 !default;
+/// firefox fix: font weight
+$fontWeightRegularAlt: 300 !default;
+$fontWeightBoldAlt: 600 !default; // inexistent in the font
+
+/// line height
+$lineHeight: 1.6em !default;
+$lineHeightMedium: 1.8em !default;
+$lineHeightBig: 2em !default;
+
+/// min column size
+$minColumnSize: 18rem !default; // 280px aprox
+
+/// max text block width
+$maxTextWidth: 66ch !default; // 780px aprox

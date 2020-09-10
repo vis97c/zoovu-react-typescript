@@ -1,0 +1,42 @@
+{
+	"root": true,
+	"parserOptions": {
+		"parser": "babel-eslint",
+		"sourceType": "module",
+		"allowImportExportEverywhere": false,
+		"ecmaVersion": 2018,
+		"ecmaFeatures": {
+			"globalReturn": false
+		}
+	},
+	"extends": ["eslint:recommended"],
+	"plugins": ["prettier"],
+	"rules": {
+		"no-extra-boolean-cast": "off",
+		"no-mixed-spaces-and-tabs": ["warn", "smart-tabs"],
+		"no-unused-vars": "warn"
+	},
+	"env": {
+		"node": true,
+		"browser": true
+	},
+	"overrides": [
+		{
+			"files": ["*.ts", "*.tsx"],
+			"parserOptions": {
+				"parser": "@typescript-eslint/parser",
+				"ecmaFeatures": { "jsx": true },
+				"ecmaVersion": 2018,
+				"sourceType": "module",
+				"project": "./tsconfig.json"
+			},
+			"extends": ["eslint:recommended", "prettier/@typescript-eslint"],
+			"plugins": ["prettier", "react", "@typescript-eslint"],
+			"settings": {
+				"react": {
+					"version": "detect" // Tells eslint-plugin-react to automatically detect the version of React to use
+				}
+			}
+		}
+	]
+}

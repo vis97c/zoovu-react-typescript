@@ -1,0 +1,21 @@
+/** @format */
+
+/// list element
+///
+/// @group Layouts
+nav.c-nList {
+	// width: 100%;
+}
+span.c-nList-title {
+	display: block;
+	margin-bottom: 1rem;
+}
+ul.c-nList-group,
+ol.c-nList-group {
+}
+li.c-nList-group-item {
+	a {
+		white-space: normal;
+		line-height: $lineHeightMedium;
+	}
+}

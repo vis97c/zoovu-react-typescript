@@ -1,0 +1,57 @@
+/** @format */
+
+/// Envuelve cada vista
+/// this element is expected to be an <input> or <textarea> tag but the text type
+///
+/// @group Components
+:not(textarea).c-inTxt {
+	i.c-icon {
+		position: absolute;
+		top: 50%;
+		left: 0.8rem;
+		z-index: 1;
+		transform: translateY(-50%);
+	}
+	input {
+		background: transparent;
+		width: 100%;
+		height: 100%;
+		padding-left: 1.6rem;
+		color: inherit;
+		font-weight: inherit;
+		box-sizing: border-box;
+	}
+}
+textarea.c-inTxt {
+	height: auto !important;
+	min-height: 6rem;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+}
+.c-inTxt {
+	width: 100%;
+	min-width: 30vw;
+	display: block;
+	padding: 0.4rem 0.8rem;
+	transition: all 0.2s ease-out;
+	border-style: solid;
+	border-bottom-width: 1px;
+	text-align: center;
+	font-style: italic;
+	background: transparent;
+	border-color: color(dark, 0.1);
+	color: color(dark, 0.9);
+	@include flexbox(column, nowrap, center, center);
+	&::placeholder,
+	input::placeholder,
+	input:placeholder-shown ~ i.c-icon {
+		color: color(dark, 0.3);
+	}
+	&:hover {
+		border-color: color(dark, 0.3);
+	}
+	&:focus,
+	&:focus-within {
+		border-color: color(primary);
+	}
+}

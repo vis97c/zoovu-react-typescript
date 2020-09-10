@@ -1,0 +1,25 @@
+{
+	"compilerOptions": {
+		"outDir": "./public",
+		"module": "esnext",
+		"jsx": "react",
+		"noImplicitAny": true,
+		"allowSyntheticDefaultImports": true,
+		"moduleResolution": "node",
+		"baseUrl": "src",
+		"paths": {
+			"_src/*": [
+				"*"
+			],
+			"_components/*": [
+				"tsx/components/*"
+			],
+			"_assets/*": [
+				"assets/*"
+			],
+			"_scss/*": [
+				"scss/*"
+			],
+		}
+	}
+}

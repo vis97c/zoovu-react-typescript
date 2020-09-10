@@ -1,0 +1,27 @@
+/** @format */
+
+/// limita el ancho de los elementos en el contenidos
+///
+/// @group Layouts
+.c-holder {
+	margin: 0 auto;
+	width: 100%;
+	// display: block;
+	&:not(.m__p-none) {
+		padding: 4rem 1rem;
+		box-sizing: border-box;
+		transition: padding 0.3s ease-out;
+		&.gm__maxWidth-1200,
+		&:not([class*="gm__maxWidth-"]) {
+			@media (min-width: $viewportMd + 1) {
+				padding: 4rem 2rem;
+			}
+			@media (min-width: $viewportXl + 1) {
+				padding: 4rem 0;
+			}
+		}
+	}
+	&:not([class*="gm__maxWidth-"]) {
+		max-width: 1200px;
+	}
+}

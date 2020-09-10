@@ -1,0 +1,35 @@
+/** @format */
+
+/// Default button element
+/// this element is expected to be an <button>, <a> or <label> element
+///
+/// @group Components
+.c-btn {
+}
+
+/// Toggle button Vertical
+/// this element is expected to be an <button>, <a> or <label> element
+///
+/// @group Components
+.c-btnY {
+	padding: 0.8rem 0.2rem;
+	border-radius: 0.4rem;
+	border-width: 2px;
+	border-style: solid;
+	box-sizing: border-box;
+	&:disabled,
+	&[disabled] {
+		pointer-events: none;
+	}
+}
+
+/// button & buttonY
+///
+/// @group SharedStyles
+.c-btn,
+.c-btnY {
+	flex: 0 0 auto;
+	transition: all 0.2s ease-out;
+	text-align: center;
+	@include flexbox(row, nowrap, center, center, inline-flex);
+}

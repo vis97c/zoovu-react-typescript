@@ -1,0 +1,45 @@
+/** @format */
+
+/// Text block component
+///
+/// @group Components
+.c-txt {
+	&:not(.c-flx):not(.c-grd):not([class*="gm__txtAlignFlx"]) {
+		display: block;
+	}
+	&:not([class*="gm__txtAlign"]) {
+		text-align: left;
+		&:not([class*="gm__gaping"]) > * {
+			display: inline-block;
+		}
+	}
+	&:not([class*="gm__txtColor"]) {
+		color: color(dark, 0.9);
+	}
+	&:not(.m__maxWidth-none) {
+		max-width: $maxTextWidth;
+	}
+	&:not([class*="gm__gaping"]) > * {
+		&:not([class*="gm__mBottom"]):not(:last-child) {
+			margin-bottom: 1rem;
+		}
+	}
+
+	/// Text block component
+	///
+	/// @group Components
+	&.m__miniBox {
+		padding: 0.5rem 1rem;
+	}
+
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+	hr {
+		display: inline-block;
+	}
+	p {
+		line-height: $lineHeightBig;
+	}
+}
