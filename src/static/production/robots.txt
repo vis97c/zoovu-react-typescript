@@ -1,7 +1,3 @@
 User-agent: *
-#Disallow: /img/
-#Disallow: /css/
-#Disallow: /js/
-#Disallow: /php/
-#Disallow: /fonts/
+Disallow: /
 Sitemap: sitemap.xml

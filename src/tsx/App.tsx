@@ -39,7 +39,9 @@ export default function App() {
 			} else {
 				// game finished
 				setPlaying(false);
-				alert("Time out, you've lost");
+				setTimeout(() => {
+					alert("Time out, you've lost");
+				}, 100);
 			}
 		}
 		// return () => {};

@@ -5,6 +5,72 @@
 ///
 /// @group Components
 .c-btn {
+	border-style: solid;
+	text-shadow: none;
+	box-sizing: border-box;
+	&:not([class*="gm__txtSize"]) {
+		font-size: 1rem;
+	}
+	/// this is the default value
+	&.m__size,
+	&.m__size-normal,
+	&:not([class*="m__size"]) {
+		height: 2.4rem;
+		border-radius: 1.2rem;
+		border-width: 1px;
+		padding: 0.1rem 1.2rem 0;
+		&.m__round {
+			width: 2.4rem;
+		}
+	}
+
+	/// round button
+	///
+	/// @group Modifiers
+	&.m__round {
+		padding: 0;
+		i.c-icon {
+			margin: 0 !important;
+			+ span {
+				display: none;
+			}
+		}
+	}
+
+	/// LOOPS
+	@each $name, $size in $fontSizes {
+		/// button & buttonToggle shared styles
+		///
+		/// @group SharedStyles
+		&.m__size-#{$name} {
+			padding: 0 #{$size * 1.2};
+			&.m__round {
+				width: $size * 2.6;
+			}
+		}
+
+		/// text, select, button & buttonToggle shared styles
+		///
+		/// @group SharedStyles
+		&.m__size-#{$name} {
+			height: $size * 2.6;
+			border-radius: $size * 1.3;
+			border-width: calc(2px + (#{$size} / 18));
+		}
+	}
+
+	&,
+	> :not(.c-icon) {
+		&::first-letter {
+			text-transform: capitalize;
+		}
+	}
+	:not(.c-icon):first-child ~ i.c-icon {
+		margin-left: 0.4em;
+	}
+	i.c-icon ~ :not(.c-icon) {
+		margin-left: 0.4em;
+	}
 }
 
 /// Toggle button Vertical
@@ -31,5 +97,105 @@
 	flex: 0 0 auto;
 	transition: all 0.2s ease-out;
 	text-align: center;
+	white-space: nowrap;
 	@include flexbox(row, nowrap, center, center, inline-flex);
+
+	/// button, select theme
+	/// first value is the bgColor
+	/// second value is the textColor
+	///
+	/// @group Unions
+
+	&.u__tm-primary-light {
+		background-color: color(primary);
+		color: color(light);
+		border-color: transparent;
+		&:hover,
+		&:focus {
+			border-color: color(light, 0.3);
+			color: color(light, 0.7);
+		}
+		&.is__routeExact,
+		&.is__active {
+			border-color: color(primary);
+			color: color(primary);
+		}
+		&:disabled,
+		&[disabled] {
+			border-color: color(primary, 0.3);
+			color: color(primary, 0.3);
+		}
+	}
+	&.u__tm-secondary-light {
+		background-color: color(secondary);
+		color: color(light);
+		border-color: transparent;
+		&:hover,
+		&:focus {
+			border-color: color(light, 0.3);
+			color: color(light, 0.7);
+		}
+		&.is__routeExact,
+		&.is__active {
+			border-color: color(secondary);
+			color: color(secondary);
+		}
+		&:disabled,
+		&[disabled] {
+			border-color: color(secondary, 0.3);
+			color: color(secondary, 0.3);
+		}
+	}
+	&.u__tm-light-secondary {
+		color: color(secondary);
+		background-color: color(light);
+		border-color: color(dark, 0.1);
+		box-shadow: 1px 1px 3px color(dark, 0.1);
+		&:hover,
+		&:focus {
+			border-color: color(secondary, 0.3);
+			color: color(secondary, 0.7);
+		}
+		&:disabled,
+		&[disabled] {
+			border-color: color(light, 0.3);
+			color: color(light, 0.3);
+		}
+		&.is__routeExact,
+		&.is__active {
+			border-color: color(light);
+			color: color(light);
+		}
+	}
+	/// default theme
+	&:not([class*="u__tm"]),
+	&.u__tm-light-primary {
+		color: color(primary);
+		background-color: color(light);
+		border-color: color(dark, 0.1);
+		box-shadow: 1px 1px 3px color(dark, 0.1);
+		&:hover,
+		&:focus {
+			border-color: color(primary, 0.3);
+			color: color(primary, 0.7);
+		}
+		&:disabled,
+		&[disabled] {
+			border-color: color(light, 0.3);
+			color: color(light, 0.3);
+		}
+		&.is__routeExact,
+		&.is__active {
+			border-color: color(light);
+			color: color(light);
+		}
+	}
+
+	/// OVERRIDE: dejar en el final
+	&.is__routeExact,
+	&.is__active,
+	&:disabled,
+	&[disabled] {
+		background-color: transparent;
+	}
 }
