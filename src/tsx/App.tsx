@@ -5,12 +5,11 @@ import Draggable from "_components/Draggable";
 import Trigger from "_components/Trigger";
 
 let dragged,
-	playing = false;
+	playing = false; // functions on react are unaware of reactivity
 
 export default function App() {
 	// react state
 	const [landing, setLanding] = useState(true); // true by default
-	// const [playing, setPlaying] = useState(false); // false by default
 	const [name, setName] = useState("");
 	const [submited, setSubmited] = useState(false);
 	const [full, setFull] = useState(0);
@@ -49,7 +48,7 @@ export default function App() {
 		// console.log("enter");
 		if (e.key == "Enter" && !playing) {
 			//launch game on enter press
-			start();
+			toGame();
 		}
 	}
 
@@ -157,7 +156,7 @@ export default function App() {
 						alert("Time out, you've lost");
 					}, 100);
 					setTimeout(() => {
-						//restart automatically afte 10s
+						//restart automatically after 10s
 						toGame();
 					}, 10000);
 				}
@@ -171,10 +170,9 @@ export default function App() {
 			// You won
 			playing = false;
 			setLanding(true);
-			setTimeLeft(timeLeft + 1);
 			setListeners(false);
 			setTimeout(() => {
-				//restart automatically afte 10s
+				//restart automatically after 10s
 				toGame();
 			}, 10000);
 		}
@@ -186,9 +184,10 @@ export default function App() {
 				<img src="/images/shapes.png" alt="" className="m__bgColor-none" />
 			</div>
 
-			<div className="c-holder gm__txtAlign-center">
+			<div className="c-holder gm__txtAlign-center gm__hidden:md-inv">
 				{landing && (
 					<div className="c-flxInline m__flxColumn gu__flx-center">
+						{/* landing */}
 						{!submited && (
 							<div className="c-flxInline m__flxColumn gu__flx-center">
 								<div className="x-txt xm__txtAlign-center">
@@ -205,6 +204,7 @@ export default function App() {
 								/>
 							</div>
 						)}
+						{/* score */}
 						{(timeLeft == 25 || timeLeft == null) && (
 							<div className="c-flx m__flxRow gu__flx-center">
 								<Trigger onClick={toGame} />
@@ -293,6 +293,16 @@ export default function App() {
 						</div>
 					</div>
 				)}
+			</div>
+
+			<div className="c-holder gm__txtAlign-center gm__hidden:md">
+				<div className="c-flxInline m__flxColumn gu__flx-center">
+					<div className="x-txt xm__txtAlign-center">
+						<p>
+							<b>Your device is not compatible with this game</b>
+						</p>
+					</div>
+				</div>
 			</div>
 		</div>
 	);
