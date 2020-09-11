@@ -39,10 +39,24 @@
 /// @group GlobalModifiers
 .gm__dropArea {
 	@include extend-viewports {
-		border: 0;
+		border: 2px solid transparent;
 		box-shadow: none !important;
 		&:not(.is__full) {
 			border: 2px dashed color(secondary);
+			&.is__over {
+				background: color(secondary, 0.3);
+			}
+			&:disabled,
+			&[disabled] {
+				pointer-events: none;
+				border-color: color(dark, 0.1);
+			}
+		}
+		&.is__full {
+			&:disabled,
+			&[disabled] {
+				pointer-events: none;
+			}
 		}
 		&:hover {
 			cursor: default !important;
@@ -322,13 +336,7 @@
 		@include extend-viewports {
 			@include flexbox(column, nowrap, flex-start, flex-end, inline-flex);
 			> :not([class*="gm__txtAlign"]):not([class|="c"]) {
-				@include flexbox(
-					column,
-					nowrap,
-					flex-start,
-					flex-end,
-					inline-flex
-				);
+				@include flexbox(column, nowrap, flex-start, flex-end, inline-flex);
 			}
 		}
 	}
@@ -336,13 +344,7 @@
 		@include extend-viewports {
 			@include flexbox(column, nowrap, flex-start, center, inline-flex);
 			> :not([class*="gm__txtAlign"]):not([class|="c"]) {
-				@include flexbox(
-					column,
-					nowrap,
-					flex-start,
-					center,
-					inline-flex
-				);
+				@include flexbox(column, nowrap, flex-start, center, inline-flex);
 			}
 		}
 	}
@@ -350,13 +352,7 @@
 		@include extend-viewports {
 			@include flexbox(column, nowrap, flex-start, stretch, inline-flex);
 			> :not([class*="gm__txtAlign"]):not([class|="c"]) {
-				@include flexbox(
-					column,
-					nowrap,
-					flex-start,
-					stretch,
-					inline-flex
-				);
+				@include flexbox(column, nowrap, flex-start, stretch, inline-flex);
 			}
 		}
 	}
@@ -364,21 +360,9 @@
 	&,
 	&-left {
 		@include extend-viewports {
-			@include flexbox(
-				column,
-				nowrap,
-				flex-start,
-				flex-start,
-				inline-flex
-			);
+			@include flexbox(column, nowrap, flex-start, flex-start, inline-flex);
 			> :not([class*="gm__txtAlign"]):not([class|="c"]) {
-				@include flexbox(
-					column,
-					nowrap,
-					flex-start,
-					flex-start,
-					inline-flex
-				);
+				@include flexbox(column, nowrap, flex-start, flex-start, inline-flex);
 			}
 		}
 	}

@@ -18,5 +18,8 @@
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "prettier.configPath": "./package.json",
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "prettier.configPath": "./package.json"
 }

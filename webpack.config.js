@@ -15,9 +15,7 @@ const isProduction = mode === "production";
 function pkg(m) {
 	// get the name. E.g. node_modules/packageName/not/this/part.js
 	// or node_modules/packageName
-	const packageName = m.context
-		.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1]
-		.replace("@", "");
+	const packageName = m.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1].replace("@", "");
 
 	// npm package names are URL-safe, but some servers don't like @ symbols
 	if (packageName.includes("react")) {
@@ -56,6 +54,7 @@ let config = {
 			},
 			{
 				test: /\.css$/i,
+				include: path.resolve(__dirname, "src"),
 				use: [
 					/**
 					 * MiniCssExtractPlugin doesn't support HMR.
@@ -68,31 +67,15 @@ let config = {
 			},
 			{
 				test: /\.s[ac]ss$/i,
+				include: path.resolve(__dirname, "src"),
 				use: [
 					...(isProduction
 						? [
 								MiniCssExtractPlugin.loader,
 								"css-loader",
-								{
-									loader: "postcss-loader",
-									options: {
-										plugins: () => [
-											require("autoprefixer"),
-											require("postcss-custom-properties")(
-												{
-													// importFrom: path.resolve(__dirname, "src/scss/base/_variables.scss")
-												}
-											),
-										],
-									},
-								},
 								"sass-loader", // Compiles Sass to CSS
 						  ]
-						: [
-								"style-loader",
-								"css-loader?sourceMap",
-								"sass-loader?sourceMap",
-						  ]),
+						: ["style-loader", "css-loader?sourceMap", "sass-loader?sourceMap"]),
 				],
 			},
 			{
@@ -146,10 +129,7 @@ if (isProduction) {
 		}),
 		new PurgecssPlugin({
 			paths: glob.sync(
-				[
-					path.join(__dirname, "./src/index.original.html"),
-					path.join(__dirname, "./src/tsx/**/*"),
-				],
+				[path.join(__dirname, "./src/index.original.html"), path.join(__dirname, "./src/tsx/**/*")],
 				{
 					nodir: true,
 				}
@@ -208,16 +188,10 @@ if (isProduction) {
 								return pkg(m);
 							} else if ("rawRequest" in m) {
 								let moduleName = m.rawRequest.split("/");
-								moduleName = moduleName[moduleName.length - 1]
-									.split("?")[0]
-									.split(".")[0];
-								if (
-									m.context.includes("src\\tsx\\components")
-								) {
+								moduleName = moduleName[moduleName.length - 1].split("?")[0].split(".")[0];
+								if (m.context.includes("src\\tsx\\components")) {
 									// COMPONENT
-									moduleName =
-										moduleName.charAt(0).toLowerCase() +
-										moduleName.slice(1);
+									moduleName = moduleName.charAt(0).toLowerCase() + moduleName.slice(1);
 									return `component.${moduleName}`;
 								}
 							}
@@ -244,17 +218,24 @@ if (isProduction) {
 					extractComments: false,
 				}),
 				new OptimizeCSSAssetsPlugin({
-					cssProcessor: require("cssnano"),
-					cssProcessorPluginOptions: {
-						preset: [
-							"default",
-							{
-								discardComments: {
-									removeAll: true,
+					cssProcessor: require("postcss")([
+						require("postcss-combine-media-query")({}),
+						require("cssnano")({
+							preset: [
+								"default",
+								{
+									discardComments: {
+										removeAll: true,
+									},
+									calc: false,
+									zindex: false,
+									autoprefixer: false,
 								},
-							},
-						],
-					},
+							],
+						}),
+						require("autoprefixer")({}),
+						require("postcss-custom-properties")({}),
+					]),
 				}),
 			],
 		},
@@ -285,7 +266,7 @@ if (isProduction) {
 			inline: true,
 			contentBase: "public",
 			historyApiFallback: true,
-			open: process.env.NODE_ENV || true,
+			open: process.env.WATCH_BROWSER || true,
 		},
 	});
 }

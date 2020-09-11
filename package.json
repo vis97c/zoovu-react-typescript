@@ -43,8 +43,9 @@
 		"mini-css-extract-plugin": "^0.6.0",
 		"node-sass": "^4.13.0",
 		"optimize-css-assets-webpack-plugin": "^5.0.3",
+		"postcss": "^7.0.27",
+		"postcss-combine-media-query": "^1.0.0",
 		"postcss-custom-properties": "^9.0.2",
-		"postcss-loader": "^3.0.0",
 		"prettier": "1.19.1",
 		"purgecss-webpack-plugin": "^1.6.0",
 		"sass-loader": "^8.0.0",
@@ -105,6 +106,7 @@
 		]
 	},
 	"prettier": {
+		"printWidth": 120,
 		"trailingComma": "es5",
 		"tabWidth": 4,
 		"useTabs": true,

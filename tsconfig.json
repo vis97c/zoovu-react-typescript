@@ -3,7 +3,7 @@
 		"outDir": "./public",
 		"module": "esnext",
 		"jsx": "react",
-		"noImplicitAny": true,
+		"noImplicitAny": false, // this is overkill
 		"allowSyntheticDefaultImports": true,
 		"moduleResolution": "node",
 		"baseUrl": "src",

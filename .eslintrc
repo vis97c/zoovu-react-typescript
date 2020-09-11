@@ -9,11 +9,18 @@
 			"globalReturn": false
 		}
 	},
-	"extends": ["eslint:recommended"],
-	"plugins": ["prettier"],
+	"extends": [
+		"eslint:recommended"
+	],
+	"plugins": [
+		"prettier"
+	],
 	"rules": {
 		"no-extra-boolean-cast": "off",
-		"no-mixed-spaces-and-tabs": ["warn", "smart-tabs"],
+		"no-mixed-spaces-and-tabs": [
+			"warn",
+			"smart-tabs"
+		],
 		"no-unused-vars": "warn"
 	},
 	"env": {
@@ -22,20 +29,56 @@
 	},
 	"overrides": [
 		{
-			"files": ["*.ts", "*.tsx"],
+			"files": [
+				"*.ts",
+				"*.tsx"
+			],
 			"parserOptions": {
 				"parser": "@typescript-eslint/parser",
-				"ecmaFeatures": { "jsx": true },
+				"ecmaFeatures": {
+					"jsx": true
+				},
 				"ecmaVersion": 2018,
 				"sourceType": "module",
 				"project": "./tsconfig.json"
 			},
-			"extends": ["eslint:recommended", "prettier/@typescript-eslint"],
-			"plugins": ["prettier", "react", "@typescript-eslint"],
+			"extends": [
+				"eslint:recommended",
+				"prettier/@typescript-eslint"
+			],
+			"plugins": [
+				"prettier",
+				"react",
+				"@typescript-eslint"
+			],
 			"settings": {
 				"react": {
 					"version": "detect" // Tells eslint-plugin-react to automatically detect the version of React to use
 				}
+			},
+			"rules": {
+				"react/react-in-jsx-scope": "off",
+				"react/jsx-max-props-per-line": [
+					"error",
+					{
+						"when": "multiline"
+					}
+				],
+				"react/jsx-first-prop-new-line": [
+					"error",
+					"multiline"
+				],
+				"react/jsx-indent": [
+					"error",
+					"tab"
+				],
+				"react/jsx-indent-props": [
+					"error",
+					"tab"
+				],
+				"react/jsx-closing-bracket-location": [
+					"error"
+				]
 			}
 		}
 	]
