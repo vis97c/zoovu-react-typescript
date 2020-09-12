@@ -11,8 +11,6 @@ console.log(
 	"padding:3px 0"
 );
 
-(window as any).$ = (window as any).jQuery = require("jquery");
-
 //main app styles
 import "_scss/index.scss";
 
