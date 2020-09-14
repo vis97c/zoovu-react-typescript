@@ -121,21 +121,9 @@ if (isProduction) {
 	const TerserPlugin = require("terser-webpack-plugin");
 	const HtmlBeautifyPlugin = require("html-beautify-webpack-plugin");
 	const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-	const PurgecssPlugin = require("purgecss-webpack-plugin");
-	const glob = require("glob-all");
 	config.plugins.push(
 		new MiniCssExtractPlugin({
 			filename: "css/[name].css",
-		}),
-		new PurgecssPlugin({
-			paths: glob.sync(
-				[path.join(__dirname, "./src/index.original.html"), path.join(__dirname, "./src/tsx/**/*")],
-				{
-					nodir: true,
-				}
-			),
-
-			whitelistPatterns: [/react-/],
 		}),
 		new HtmlWebpackPlugin({
 			filename: "index.html",
@@ -180,7 +168,7 @@ if (isProduction) {
 						chunks: "all",
 						minSize: 10000,
 					},
-					// Split Vue chunks
+					// Split chunks
 					react: {
 						name: m => {
 							if (m.context.includes("node_modules")) {
