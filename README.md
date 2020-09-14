@@ -31,3 +31,13 @@ Also while developing you can optionally provide the enviroment variable "WATCH_
 The source files will be available at "**src**" directory
 
 ## deployment
+
+This project is hosted on surge
+
+```bash
+    yarn deploy
+    #Or
+    npm run deploy
+```
+
+Optionally you can run the "**build**" command to generate the required assets to deploy in other enviroment

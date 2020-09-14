@@ -10,7 +10,7 @@
 		"dev": "cross-env NODE_ENV=development webpack",
 		"watch": "webpack-dev-server",
 		"test": "jest",
-		"deploy": "rm -r public && yarn build && surge public --domain zoovu-react.surge.sh"
+		"deploy": "yarn test && rm -r public -f && yarn build && surge public --domain zoovu-react.surge.sh"
 	},
 	"devDependencies": {
 		"@babel/cli": "^7.8.4",

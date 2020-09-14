@@ -186,7 +186,7 @@ export default function App() {
 
 			<div className="c-holder gm__txtAlign-center gm__hidden:md-inv">
 				{landing && (
-					<div className="c-flxInline m__flxColumn gu__flx-center">
+					<div id="login" className="c-flxInline m__flxColumn gu__flx-center">
 						{/* landing */}
 						{!submited && (
 							<div className="c-flxInline m__flxColumn gu__flx-center">
@@ -238,7 +238,7 @@ export default function App() {
 					</div>
 				)}
 				{!landing && (
-					<div className="c-flx m__flxColumn gu__flx-center gm__gapingY-100">
+					<div id="playground" className="c-flx m__flxColumn gu__flx-center gm__gapingY-100">
 						<div className="c-flx m__flxColumn gu__flx-center-stretch gm__gapingY-30">
 							<div className="c-flx m__flxColumn gu__flx-center-stretch">
 								<div className="c-flx m__flxRow gu__flx-between-center">
